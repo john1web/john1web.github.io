@@ -1,7 +1,43 @@
 <html>
 <body>
-This is a test.<br />
-This si test Line 2.
+<h2>This is a Test</h2>
+<input type="button" id="btn1" value="Blue Tooth" onclick="onButtonClick()" />
+<br /><br />
+<label id="lbl1">Result</label>
+<script>
+    function onButtonClick() {
+        document.getElementById('lbl1').innerHTML = "Started";
+        
+        log('Requesting Bluetooth Device...');
+        navigator.bluetooth.requestDevice(
+          { filters: [{ services: ['battery_service'] }] })
+        .then(device => {
+            log('Connecting to GATT Server...');
+            return device.gatt.connect();
+        })
+        .then(server => {
+            log('Getting Battery Service...');
+            return server.getPrimaryService('battery_service');
+        })
+        .then(service => {
+            log('Getting Battery Level Characteristic...');
+            return service.getCharacteristic('battery_level');
+        })
+        .then(characteristic => {
+            log('Reading Battery Level...');
+            return characteristic.readValue();
+        })
+        .then(value => {
+            let batteryLevel = value.getUint8(0);
+            log('> Battery Level is ' + batteryLevel + '%');
+        })
+        .catch(error => {
+            log('Argh! ' + error);
+            document.getElementById('lbl1').innerHTML = error;
+        });
+        
+    }
+</script>
 
 </body>
 </html?
