@@ -11,7 +11,6 @@
         navigator.bluetooth.requestDevice(
           { filters: [{ services: ['battery_service'] }] })
         .then(device => {
-            //log('Connecting to GATT Server...');
             document.getElementById('lbl1').innerHTML = "Started 3";
             return device.gatt.connect();
         })
