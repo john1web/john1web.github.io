@@ -9,11 +9,11 @@
         document.getElementById('lbl1').innerHTML = "Started";
         document.getElementById('lbl1').innerHTML = "Started 2";
         navigator.bluetooth.requestDevice(
-            document.getElementById('lbl1').innerHTML = "Started 3";
           { filters: [{ services: ['battery_service'] }] })
         document.getElementById('lbl1').innerHTML = "Started 4";
         .then(device => {
-            log('Connecting to GATT Server...');
+            //log('Connecting to GATT Server...');
+            document.getElementById('lbl1').innerHTML = "Started 3";
             return device.gatt.connect();
             document.getElementById('lbl1').innerHTML = "Started 5";
         })
