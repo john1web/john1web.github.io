@@ -6,10 +6,10 @@
 <label id="lbl1">Result</label>
 <script>
     function onButtonClick() {
-        //document.getElementById('lbl1').innerHTML = "Started";
+        document.getElementById('lbl1').innerHTML = 'Started';
         
         
-        document.getElementById('lbl1').innerHTML = "Started 2";
+        document.getElementById('lbl1').innerHTML = 'Started 2';
         navigator.bluetooth.requestDevice(
             document.getElementById('lbl1').innerHTML = "Started 3";
           { filters: [{ services: ['battery_service'] }] })
