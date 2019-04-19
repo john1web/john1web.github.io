@@ -9,7 +9,7 @@
         document.getElementById('lbl1').innerHTML = "Started";
         document.getElementById('lbl1').innerHTML = "Started 2";
         navigator.bluetooth.requestDevice(
-          { filters: [{ services: ['0000011B1302177A4803'] }] })
+          { filters: [{ services: ['BLEsmart_0000011B1302177A4803'] }] })
         .then(device => {
             document.getElementById('lbl1').innerHTML = "Started 3";
             return device.gatt.connect();
