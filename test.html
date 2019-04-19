@@ -8,7 +8,15 @@
     function onButtonClick() {
         document.getElementById('lbl1').innerHTML = "Started";
         document.getElementById('lbl1').innerHTML = "Started 2";
-        
+        navigator.bluetooth.requestDevice(
+          { filters: [{ services: ['BP786N'] }] })
+        .then(device => {
+            document.getElementById('lbl1').innerHTML = "Started 3";
+            return device.gatt.connect();
+        })
+        .catch(error => {
+            document.getElementById('lbl1').innerHTML = error;
+        });
         
     }
 </script>
